@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coin Dash</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell">
+    <header class="game-header">
+      <div>
+        <h1>Coin Dash</h1>
+        <p>Jump over obstacles and collect coins.</p>
+      </div>
+
+      <div class="header-actions">
+        <button id="sound-button" class="secondary-button" type="button" aria-pressed="true">
+          Sound: On
+        </button>
+        <button id="leaderboard-button" class="secondary-button" type="button">
+          Leaderboard
+        </button>
+      </div>
+    </header>
+
+    <section class="game-panel" aria-label="Game">
+      <div class="hud">
+        <span>Score: <strong id="score">0</strong></span>
+        <span>Best: <strong id="best-score">0</strong></span>
+      </div>
+
+      <canvas id="game-canvas" width="800" height="400" aria-label="Coin Dash game area"></canvas>
+
+      <div id="start-screen" class="screen">
+        <h2>Ready to play?</h2>
+        <p>Press Space, Arrow Up, or tap the game to jump.</p>
+        <button id="start-button" type="button">Start Game</button>
+      </div>
+
+      <div id="game-over-screen" class="screen hidden">
+        <h2>Game Over</h2>
+        <p>Your score: <strong id="final-score">0</strong></p>
+
+        <label for="player-name">Name for leaderboard</label>
+        <input id="player-name" type="text" maxlength="16" placeholder="Player" autocomplete="name">
+
+        <div class="screen-actions">
+          <button id="save-score-button" type="button">Save Score</button>
+          <button id="restart-button" class="secondary-button" type="button">Play Again</button>
+        </div>
+        <p id="save-message" class="message" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <p class="instructions">Controls: Space / ↑ / W / tap to jump</p>
+
+    <section id="leaderboard-overlay" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="leaderboard-title">
+      <div class="dialog">
+        <button id="close-leaderboard-button" class="close-button" type="button" aria-label="Close leaderboard">×</button>
+        <h2 id="leaderboard-title">Top 5 Scores</h2>
+        <ol id="leaderboard-list"></ol>
+        <p id="empty-leaderboard" class="muted">No scores saved yet. Play a game to make the list!</p>
+        <button id="clear-scores-button" class="danger-button" type="button">Clear Scores</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
